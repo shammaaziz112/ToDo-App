@@ -8,11 +8,15 @@
 
 body {
   /* height: 100vh; */
-  background-color: #e0dffd;
+  /* background-color: #e0dffd; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #46467a;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%2346467A' cx='50' cy='0' r='50'/%3E%3Cg fill='%234e497f' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23564c85' cx='50' cy='100' r='50'/%3E%3Cg fill='%235e4f8a' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%2366528f' cx='50' cy='200' r='50'/%3E%3Cg fill='%236f5593' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%23775898' cx='50' cy='300' r='50'/%3E%3Cg fill='%23805b9c' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23895ea1' cx='50' cy='400' r='50'/%3E%3Cg fill='%239261a5' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%239b64a9' cx='50' cy='500' r='50'/%3E%3Cg fill='%23a467ac' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%23ae69b0' cx='50' cy='600' r='50'/%3E%3Cg fill='%23b76cb3' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%23c06fb6' cx='50' cy='700' r='50'/%3E%3Cg fill='%23ca72b9' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23d374bb' cx='50' cy='800' r='50'/%3E%3Cg fill='%23dd77bd' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%23e67ac0' cx='50' cy='900' r='50'/%3E%3Cg fill='%23f07dc1' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23F980C3' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: contain;
 }
 
 h1 {
@@ -38,7 +42,7 @@ h1 {
   align-self: baseline;
 }
 
-input {
+#inputTask {
   flex: 5;
   margin-right: 10px;
   border-radius: 10px;
@@ -70,38 +74,22 @@ input {
   height: 100%;
 }
 
-/* .taskList {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-}
-
-.taskItem {
-  background-color: white;
-  display: flex;
-  width: 150px;
-  height: 150px;
-  margin: 0 20px;
-  padding: 13px 15px 0 15px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px #c3c2de;
-  border-top: 40px solid #46467a;
-} */
 
 /* Styling for task which get added to to-do list */
 
-.Task {
+#tasksList {
   list-style: none;
   display: flex;
   justify-content: space-between;
   /* background-color: green; */
 }
 
-.Task li {
+#tasksList li {
   background-color: white;
   display: flex;
-  width: 150px;
-  height: 150px;
+  flex-wrap: wrap;
+  width: 220px;
+  height: 170px;
   margin: 0 20px;
   padding: 13px 15px 0 15px;
   border-radius: 20px;
@@ -109,32 +97,60 @@ input {
   border-top: 40px solid #46467a;
 }
 
-.Task button {
-  flex: 1;
+#tasksList li {
+  /* background-color: white;
+  display: flex;
+  width: 150px;
+  height: 150px;
+  margin: 0 20px;
+  padding: 13px 15px 0 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #c3c2de;
+  border-top: 40px solid #46467a; */
+  overflow-wrap: anywhere;
+}
+
+#tasksList button {
+  /* flex: 1;
   border-radius: 10px;
   background-color: #fff;
+  cursor: pointer; */
+  border: none;
+  color: white;
+  /* padding: 12px 16px; */
+  font-size: 16px;
   cursor: pointer;
 }
 
-.Task .checkTask {
-  color: orange;
-  margin-right: 5px;
-  border: solid 2px orange;
+#tasksList .checkTask {
+  margin-right: 15px;
   font-size: 1.5rem;
+  align-self: baseline;
+  transform: scale(2);
+  cursor: pointer;
+  /* flex: 1; */
 }
 
-.Task .checkTask:hover {
-  background-color: orange;
+#tasksList .checkTask:hover {
   color: #fff;
 }
 
-.Task .deleteTask {
+#tasksList .task.done {
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+#tasksList .deleteTask {
   color: red;
-  border: solid 2px red;
+  border: 0;
   font-size: 1.5rem;
+  align-self: end;
+  font-weight: 900;
+  width: 0;
+  /* flex: 1; */
 }
 
-.Task .deleteTask:hover {
-  background-color: red;
-  color: #fff;
+#tasksList .deleteTask:hover {
+  /* background-color: red; */
+  color: darkred;
 }
