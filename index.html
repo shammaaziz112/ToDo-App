@@ -14,19 +14,36 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
     <title>ToDo</title>
   </head>
   <body>
-    <h1>To-Do List</h1>
     <div class="container">
+      <h1>To-Do List</h1>
       <div>
         <div id="add-task-container">
-          <input type="text" placeholder="Enter Task" id="inputTask" autofocus/>
+          <div>
+            <i class="fa-solid fa-thumbtack"></i>
+            <input
+              type="text"
+              placeholder="Enter Task"
+              id="inputTask"
+              autofocus
+            />
+          </div>
           <button id="add-task"><i class="fa-solid fa-plus"></i></button>
         </div>
       </div>
       <div id="task-container">
+        <div class="task-tool">
+          <div>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search" id="taskSearch" />
+          </div>
+        </div>
         <ul id="tasksList"></ul>
       </div>
     </div>

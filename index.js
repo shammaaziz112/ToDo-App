@@ -1,6 +1,7 @@
 let inputTask = document.querySelector('#inputTask');
 let addBtn = document.querySelector('#add-task');
 let tasksList = document.querySelector('#tasksList');
+let taskSearch = document.querySelector('#taskSearch');
 
 // Empty Array To Store The Tasks
 let arrayOfTasks = [];
@@ -59,14 +60,51 @@ function addElementsToPageFrom(arrayOfTasks) {
       checkButton.checked = true;
     }
 
-    let taskTitle = document.createElement('span');
-    taskTitle.textContent = task.title;
     taskLi.setAttribute('data-id', task.id);
+
+    let taskTitle = document.createElement('input');
+    taskTitle.type = 'text';
+    taskTitle.value = task.title;
+    taskTitle.classList.add('taskTitle');
+    taskTitle.setAttribute('readonly', 'readonly');
+
     taskLi.appendChild(taskTitle);
+
+    let taskBtns = document.createElement('div');
+    taskBtns.className = 'btnContainer';
+
     // Create Delete Button
     let deleteButton = document.createElement('button');
-    deleteButton.innerHTML = `<i class="glyphicon glyphicon-remove"></i>`;
+    deleteButton.innerHTML = `<i class="fa-regular fa-rectangle-xmark"></i>`;
     deleteButton.classList.add('deleteTask');
+
+    let editButton = document.createElement('button');
+    editButton.innerHTML = `<i class="fa-regular fa-pen-to-square"></i>`;
+    editButton.classList.add('editTask');
+
+    // Append Button To Main taskLi
+    taskBtns.appendChild(deleteButton);
+    taskBtns.appendChild(editButton);
+    taskLi.appendChild(taskBtns);
+    // Add Task taskLi To Tasks Container
+    tasksList.appendChild(taskLi);
+
+    //? SEARCH
+    taskSearch.addEventListener('keyup', function searchTodo(e) {
+      const searchText = e.target.value.toLowerCase();
+
+      if (searchText !== '') {
+        for (let index = 0; index < arrayOfTasks.length; index++) {
+          if (task.title.includes(searchText)) {
+            taskLi.style.display = 'flex';
+          } else {
+            taskLi.style.display = 'none';
+          }
+        }
+      } else {
+        getDataFromLocalStorage();
+      }
+    });
 
     checkButton.addEventListener('click', function (e) {
       toggleStatusTaskWith(e.target.parentElement.getAttribute('data-id'));
@@ -74,16 +112,27 @@ function addElementsToPageFrom(arrayOfTasks) {
       e.target.parentElement.classList.toggle('done');
     });
 
+    editButton.addEventListener('click', function (e) {
+      let target = e.target.parentElement.parentElement.parentElement;
+      if (
+        editButton.innerHTML == `<i class="fa-regular fa-pen-to-square"></i>`
+      ) {
+        // editButton.innerHTML = ""
+        editButton.innerHTML = `<i class="fa-regular fa-square-check"></i>`;
+        taskTitle.removeAttribute('readonly');
+        taskTitle.focus();
+      } else {
+        editButton.innerHTML = `<i class="fa-regular fa-pen-to-square"></i>`;
+        taskTitle.setAttribute('readonly', 'readonly');
+        editTaskTitle(target.getAttribute('data-id'), taskTitle.value);
+      }
+    });
+
     deleteButton.addEventListener('click', function (e) {
-      let target = e.target.parentElement.parentElement;
+      let target = e.target.parentElement.parentElement.parentElement;
       target.remove();
       deleteTaskWith(target.getAttribute('data-id'));
     });
-
-    // Append Button To Main taskLi
-    taskLi.appendChild(deleteButton);
-    // Add Task taskLi To Tasks Container
-    tasksList.appendChild(taskLi);
   });
 }
 
@@ -110,6 +159,15 @@ function toggleStatusTaskWith(taskId) {
       arrayOfTasks[i].completed == false
         ? (arrayOfTasks[i].completed = true)
         : (arrayOfTasks[i].completed = false);
+    }
+  }
+  addDataToLocalStorageFrom(arrayOfTasks);
+}
+
+function editTaskTitle(taskId, taskTitle) {
+  for (let i = 0; i < arrayOfTasks.length; i++) {
+    if (arrayOfTasks[i].id == taskId) {
+      arrayOfTasks[i].title = taskTitle;
     }
   }
   addDataToLocalStorageFrom(arrayOfTasks);

@@ -7,50 +7,63 @@
 }
 
 body {
-  /* height: 100vh; */
-  /* background-color: #e0dffd; */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   background-color: #46467a;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%2346467A' cx='50' cy='0' r='50'/%3E%3Cg fill='%234e497f' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23564c85' cx='50' cy='100' r='50'/%3E%3Cg fill='%235e4f8a' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%2366528f' cx='50' cy='200' r='50'/%3E%3Cg fill='%236f5593' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%23775898' cx='50' cy='300' r='50'/%3E%3Cg fill='%23805b9c' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23895ea1' cx='50' cy='400' r='50'/%3E%3Cg fill='%239261a5' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%239b64a9' cx='50' cy='500' r='50'/%3E%3Cg fill='%23a467ac' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%23ae69b0' cx='50' cy='600' r='50'/%3E%3Cg fill='%23b76cb3' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%23c06fb6' cx='50' cy='700' r='50'/%3E%3Cg fill='%23ca72b9' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23d374bb' cx='50' cy='800' r='50'/%3E%3Cg fill='%23dd77bd' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%23e67ac0' cx='50' cy='900' r='50'/%3E%3Cg fill='%23f07dc1' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23F980C3' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
   background-attachment: fixed;
   background-size: contain;
-}
-
-h1 {
-  margin-bottom: 50px;
-  margin-top: 25px;
-  color: #46467a;
+  background-size: contain;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
-#add-task-container {
+.container h1 {
+  margin: 30px 0 20px 0;
+  color: white;
+  text-shadow: 0 0 10px #46467a;
+}
+
+.container #add-task-container {
   width: 350px;
   padding: 10px 10px;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 0 3px;
+  border-radius: 15px;
   margin-bottom: 20px;
   display: flex;
   align-self: baseline;
 }
 
-#inputTask {
+.container #add-task-container div i {
+  position: absolute;
+  color: #ffc212;
+  margin: 8px 5px 15px 10px;
+}
+
+.container #add-task-container div {
+  flex: 5;
+  margin-right: 7px;
+  align-self: center;
+}
+
+.container #add-task-container div #inputTask {
   flex: 5;
   margin-right: 10px;
   border-radius: 10px;
   font-size: 1.2rem;
-  padding: 5px;
+  padding: 5px 3px 5px 27px;
+  appearance: none;
+  border: none;
+  outline: none;
+  width: 100%;
 }
 
-#add-task {
+.container #add-task-container #add-task {
   flex: 1;
   transition: 0.3s;
   font-size: 1.2rem;
@@ -61,63 +74,90 @@ h1 {
   border-radius: 10px;
 }
 
-#add-task:hover {
+.container #add-task-container #add-task:hover {
   background-color: green;
   color: #fff;
 }
 
-.task-container {
+.container #task-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px #46467a;
+  border-radius: 10px;
   width: 100%;
-  height: 100%;
 }
 
+.container #task-container .task-tool {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  margin-top: 20px;
+}
+
+.container #task-container .task-tool div {
+  flex: 1;
+}
+
+.container #task-container .task-tool div i {
+  position: absolute;
+  color: #ffc212;
+  margin: 7px 0px 0px 7px;
+}
+
+.container #task-container .task-tool div #taskSearch {
+  border-radius: 10px;
+  font-size: 1.2rem;
+  padding: 5px 3px 5px 27px;
+  appearance: none;
+  border: none;
+  outline: none;
+  width: 100%;
+}
 
 /* Styling for task which get added to to-do list */
 
-#tasksList {
+.container #task-container #tasksList {
   list-style: none;
   display: flex;
-  justify-content: space-between;
-  /* background-color: green; */
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
 }
 
-#tasksList li {
+#tasksList .task {
   background-color: white;
   display: flex;
   flex-wrap: wrap;
-  width: 220px;
-  height: 170px;
-  margin: 0 20px;
+  width: 300px;
+  height: 100px;
+  margin: 10px 10px 15px 10px;
   padding: 13px 15px 0 15px;
   border-radius: 20px;
-  box-shadow: 0 0 10px #c3c2de;
-  border-top: 40px solid #46467a;
+  box-shadow: 0 0 10px #46467a;
+  border-left: 30px solid #f9b0c3;
+  overflow-wrap: anywhere;
+  overflow: hidden;
 }
 
-#tasksList li {
-  /* background-color: white;
-  display: flex;
-  width: 150px;
-  height: 150px;
-  margin: 0 20px;
-  padding: 13px 15px 0 15px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px #c3c2de;
-  border-top: 40px solid #46467a; */
-  overflow-wrap: anywhere;
+#tasksList .taskTitle[readonly='readonly'] {
+  appearance: none;
+  border: none;
+  outline: none;
+  align-self: baseline;
+  flex: 6;
+}
+
+#tasksList .taskTitle {
+  align-self: baseline;
 }
 
 #tasksList button {
-  /* flex: 1;
-  border-radius: 10px;
-  background-color: #fff;
-  cursor: pointer; */
   border: none;
   color: white;
-  /* padding: 12px 16px; */
   font-size: 16px;
   cursor: pointer;
 }
@@ -126,9 +166,9 @@ h1 {
   margin-right: 15px;
   font-size: 1.5rem;
   align-self: baseline;
-  transform: scale(2);
+  transform: scale(1.6);
   cursor: pointer;
-  /* flex: 1; */
+  flex: 0;
 }
 
 #tasksList .checkTask:hover {
@@ -137,13 +177,22 @@ h1 {
 
 #tasksList .task.done {
   text-decoration: line-through;
-  opacity: 0.8;
+  opacity: 0.6;
+}
+
+.btnContainer {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding-right: 19px;
 }
 
 #tasksList .deleteTask {
   color: red;
   border: 0;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   align-self: end;
   font-weight: 900;
   width: 0;
@@ -153,4 +202,13 @@ h1 {
 #tasksList .deleteTask:hover {
   /* background-color: red; */
   color: darkred;
+}
+
+#tasksList .editTask {
+  color: black;
+  border: 0;
+  font-size: 1.8rem;
+  align-self: end;
+  font-weight: 900;
+  width: 0;
 }
