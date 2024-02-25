@@ -231,6 +231,7 @@ function renderTasks(arrayOfTasks) {
 
 function addDataToLocalStorageFrom(arrayOfTasks) {
   window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
+  renderTasks(arrayOfTasks);
 }
 
 function getDataFromLocalStorage() {
@@ -244,6 +245,7 @@ function getDataFromLocalStorage() {
 function deleteTaskWith(taskId) {
   arrayOfTasks = arrayOfTasks.filter((task) => task.id != taskId);
   calculateProgress();
+
   addDataToLocalStorageFrom(arrayOfTasks);
 }
 
