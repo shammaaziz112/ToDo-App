@@ -31,8 +31,10 @@ function addTaskToArray(taskText) {
     title: taskText,
     completed: false,
   };
+
   // Push Task To Array Of Tasks
   arrayOfTasks.push(task);
+
   // Add Tasks To Page
   addElementsToPageFrom(arrayOfTasks);
   // Add Tasks To Local Storage
@@ -42,13 +44,21 @@ function addTaskToArray(taskText) {
 function addElementsToPageFrom(arrayOfTasks) {
   // Empty Tasks taskLi
   tasksList.innerHTML = '';
+  console.log(arrayOfTasks);
+  arrayOfTasks.sort((a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0));
+  console.log(arrayOfTasks);
   // Looping On Array Of Tasks
   arrayOfTasks.forEach((task) => {
     // Create Main taskLi
     let taskLi = document.createElement('li');
     taskLi.className = 'task';
 
-    // CheckBox
+    // Create div for color task
+    let colorDiv = document.createElement('div');
+    colorDiv.className = 'colorDiv';
+    taskLi.appendChild(colorDiv);
+    
+    // Create CheckBox
     let checkButton = document.createElement('input');
     checkButton.type = `checkbox`;
     checkButton.classList.add('checkTask');
@@ -62,14 +72,15 @@ function addElementsToPageFrom(arrayOfTasks) {
 
     taskLi.setAttribute('data-id', task.id);
 
+    // Create Task
     let taskTitle = document.createElement('input');
     taskTitle.type = 'text';
     taskTitle.value = task.title;
     taskTitle.classList.add('taskTitle');
     taskTitle.setAttribute('readonly', 'readonly');
-
     taskLi.appendChild(taskTitle);
 
+    // Create Container button
     let taskBtns = document.createElement('div');
     taskBtns.className = 'btnContainer';
 
@@ -78,6 +89,7 @@ function addElementsToPageFrom(arrayOfTasks) {
     deleteButton.innerHTML = `<i class="fa-regular fa-rectangle-xmark"></i>`;
     deleteButton.classList.add('deleteTask');
 
+    // Create Edit Button
     let editButton = document.createElement('button');
     editButton.innerHTML = `<i class="fa-regular fa-pen-to-square"></i>`;
     editButton.classList.add('editTask');
@@ -86,8 +98,10 @@ function addElementsToPageFrom(arrayOfTasks) {
     taskBtns.appendChild(deleteButton);
     taskBtns.appendChild(editButton);
     taskLi.appendChild(taskBtns);
-    // Add Task taskLi To Tasks Container
+
+    // Add taskLi To Tasks Container
     tasksList.appendChild(taskLi);
+    arrayOfTasks.sort((a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0));
 
     //? SEARCH
     taskSearch.addEventListener('keyup', function searchTodo(e) {
@@ -161,7 +175,9 @@ function toggleStatusTaskWith(taskId) {
         : (arrayOfTasks[i].completed = false);
     }
   }
+  arrayOfTasks.sort((a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0));
   addDataToLocalStorageFrom(arrayOfTasks);
+  addElementsToPageFrom(arrayOfTasks);
 }
 
 function editTaskTitle(taskId, taskTitle) {
