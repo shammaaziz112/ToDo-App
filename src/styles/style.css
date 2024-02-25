@@ -1,5 +1,4 @@
 /* To-Do Styling */
-
 :root {
   --primary-color: #f7e1d4;
   --secondary-color: #f6d1be;
@@ -90,16 +89,14 @@ header p q {
 
 /* Input Task */
 .container #add-task-container {
-  width: 350px;
+  width: 89%;
   padding: 10px 10px;
-  border-radius: 15px;
   margin-bottom: 20px;
   display: flex;
-  align-self: baseline;
 }
 
 .container #add-task-container div {
-  flex: 5;
+  flex: 13;
   margin-right: 7px;
   align-self: center;
 }
@@ -112,9 +109,12 @@ header p q {
   -webkit-text-stroke-color: black;
 }
 
-.container #add-task-container div #inputTask {
-  flex: 5;
-  margin-right: 15px;
+.container #add-task-container div {
+  display: flex;
+}
+.container #add-task-container div #inputTask,
+#inputTaskDec {
+  flex: 2;
   border-radius: 10px;
   font-size: 1rem;
   padding: 6px 2px 6px 28px;
@@ -124,27 +124,42 @@ header p q {
   width: 100%;
 }
 
-.container #add-task-container div #inputTask:focus {
+.container #add-task-container div #inputTask:focus,
+#inputTaskDec:focus {
   box-shadow: 0 5px 10px gray;
 }
 
-.container #add-task-container #add-task {
+.container #add-task-container #add-task,
+#deleteAll-task {
   flex: 1;
   transition: 0.3s;
   font-size: 1.5rem;
   padding: 1px 0;
   background-color: #fff;
-  color: var(--tertiary-color);
   border: black solid 1px;
   border-radius: 10px;
-  margin-left: 30px;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   transition: all 0.3s ease;
 }
 
+.container #add-task-container #add-task {
+  color: var(--tertiary-color);
+  margin-right: 5px;
+}
+
+.container #add-task-container #deleteAll-task {
+  color: red;
+}
+
 .container #add-task-container #add-task:hover {
   background-color: var(--tertiary-color);
+  color: #fff;
+  box-shadow: 0 5px 10px gray;
+}
+
+.container #add-task-container #deleteAll-task:hover {
+  background-color: darkred;
   color: #fff;
   box-shadow: 0 5px 10px gray;
 }
@@ -164,16 +179,17 @@ header p q {
 /* Task Search */
 .container #task-container .task-tool {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 0 20px;
   margin-top: 20px;
 }
 
-.container #task-container .task-tool div {
-  flex: 1;
-  margin-right: 38px;
+/* Search */
+.s-container {
+  display: flex;
+  align-content: center;
+  flex: 3;
 }
 
 .container #task-container .task-tool div i {
@@ -192,21 +208,82 @@ header p q {
   appearance: none;
   border: 1px solid black;
   outline: none;
-  width: 100%;
+  width: 89%;
 }
 
 .container #task-container .task-tool div #taskSearch:focus {
   box-shadow: 0 5px 10px gray;
 }
 
-/* Styling for task which get added to to-do list */
+/* progress */
+.p-container {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+}
 
+.progress-container {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  background-color: var(--button-color);
+  border-radius: 15px;
+  z-index: 2;
+  width: 100%;
+  height: 0;
+}
+
+#progressBar {
+  z-index: 1;
+  width: 0%;
+  height: 20px;
+  background-color: var(--tertiary-darker);
+  border-radius: 10px;
+}
+#progressText {
+  color: var(--primary-color);
+  margin: -22px 0px 0px 0%;
+  text-align: center;
+  -webkit-text-stroke-width: 0.9px;
+  -webkit-text-stroke-color: black;
+}
+
+.status-bar {
+  text-align: center;
+}
+
+#quote {
+  font-weight: 500;
+  padding: 0 10px;
+  align-items: center;
+  color: var(--button-color);
+  -webkit-text-stroke-width: 0.9px;
+  -webkit-text-stroke-color: black;
+}
+
+.progress-background {
+  height: 20px;
+
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--tertiary-color);
+  z-index: -4;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+/* Styling for task which get added to to-do list */
 .container #task-container #tasksList {
   list-style: none;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 20px 0;
+  margin: 45px 0 20px 0;
+}
+.container #task-container #tasksList p {
+  margin-top: 15px;
+  display: flex;
+  text-align: center;
 }
 
 .container #task-container #tasksList .colorDiv {
@@ -231,9 +308,27 @@ header p q {
   overflow: hidden;
 }
 
-#tasksList .taskTitle {
-  align-self: baseline;
+#tasksList .divTask {
+  display: flex;
+  flex-direction: column;
   flex: 6;
+}
+
+#tasksList .taskTitle,
+.taskDec {
+  align-self: baseline;
+  overflow-wrap: anywhere;
+}
+#tasksList .taskTitle[contenteditable='true'] {
+  border: 1px solid lightgray;
+}
+
+#tasksList .taskDec {
+  margin-top: 7px;
+  color: grey;
+}
+#tasksList .taskDec[contenteditable='true'] {
+  border: 1px solid lightgray;
 }
 
 #tasksList .taskTitle[readonly='readonly'] {
@@ -249,19 +344,7 @@ header p q {
   transform: scale(1.6);
   cursor: pointer;
   flex: 0;
-  /* accent-color: var(--button-color); */
   border: 10px solid black;
-}
-
-#tasksList .checkTask:checked {
-  /* border: 10px solid black; */
-  /* accent-color: var(--button-color); */
-}
-
-#tasksList .checkTask:hover {
-  /* color: #fff;
-  background-color: #1a613a; */
-  border: none;
 }
 
 #tasksList .task.done {
@@ -324,7 +407,7 @@ footer .Contact {
 }
 
 footer .Contact i {
-  color: var(--tertiary-darker);
+  color: var(--tertiary-color);
   font-size: 30px;
   margin-right: 10px;
   -webkit-text-stroke-width: 0.8px;
@@ -336,4 +419,17 @@ footer .team {
   color: var(--button-color);
   -webkit-text-stroke-width: 0.8px;
   -webkit-text-stroke-color: black;
+}
+
+footer .team bdi {
+  color: var(--tertiary-color);
+}
+
+@media (max-width: 950px) {
+  .container #task-container .task-tool {
+    flex-direction: column;
+  }
+  .container #add-task-container div {
+    flex-direction: column;
+  }
 }

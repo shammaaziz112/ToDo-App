@@ -45,9 +45,9 @@
     </header>
 
     <main class="container">
-      <div>
-        <div id="add-task-container">
-          <div>
+      <div id="add-task-container">
+        <div>
+          <div class="inputTitle">
             <i class="fa-solid fa-thumbtack"></i>
             <input
               type="text"
@@ -56,14 +56,41 @@
               autofocus
             />
           </div>
-          <button id="add-task"><i class="fa-solid fa-plus"></i></button>
+          <div class="inputDescription">
+            <i class="fa-solid fa-note-sticky"></i>
+            <input
+              type="text"
+              placeholder="Enter Description"
+              id="inputTaskDec"
+              autofocus
+            />
+          </div>
         </div>
+        <button id="add-task"><i class="fa-solid fa-plus"></i></button>
+        <button id="deleteAll-task">
+          <i class="fa-regular fa-rectangle-xmark"></i>
+        </button>
       </div>
+
       <div id="task-container">
         <div class="task-tool">
-          <div>
+          <div class="s-container">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder="Search" id="taskSearch" />
+          </div>
+
+          <div class="p-container">
+            <div class="progress-container">
+              <div class="progress-background">
+                <div id="progressBar"></div>
+                <div>
+                  <p id="progressText"></p>
+                </div>
+              </div>
+              <div class="status-bar">
+                <p id="quote">random quote here</p>
+              </div>
+            </div>
           </div>
         </div>
         <ul id="tasksList"></ul>
@@ -81,9 +108,9 @@
       </div>
 
       <div class="team">
-        <p>Done by Shama Alkhaldi</p>
-        <p>Instrcuted by Yazan Alhalabi</p>
-        <p>Supported by Thoa Nguyen & Zhiyuan Liu</p>
+        <p>Done by <bdi>Shama Alkhaldi</bdi></p>
+        <p>Instrcuted by <bdi>Yazan Alhalabi</bdi></p>
+        <p>Supported by <bdi>Thoa Nguyen</bdi> & <bdi>Zhiyuan Liu</bdi></p>
         <p>Made With Love ❤️</p>
       </div>
     </footer>
