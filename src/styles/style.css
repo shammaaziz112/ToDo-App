@@ -112,8 +112,8 @@ header p q {
 .container #add-task-container div {
   display: flex;
 }
-.container #add-task-container div #inputTask,
-#inputTaskDec {
+.container #add-task-container div #inputTaskTitle,
+#inputTaskDescription {
   flex: 2;
   border-radius: 10px;
   font-size: 1rem;
@@ -124,8 +124,8 @@ header p q {
   width: 100%;
 }
 
-.container #add-task-container div #inputTask:focus,
-#inputTaskDec:focus {
+.container #add-task-container div #inputTaskTitle:focus,
+#inputTaskDescription:focus {
   box-shadow: 0 5px 10px gray;
 }
 
@@ -315,7 +315,7 @@ header p q {
 }
 
 #tasksList .taskTitle,
-.taskDec {
+.taskDescription {
   align-self: baseline;
   overflow-wrap: anywhere;
 }
@@ -323,18 +323,12 @@ header p q {
   border: 1px solid lightgray;
 }
 
-#tasksList .taskDec {
+#tasksList .taskDescription {
   margin-top: 7px;
   color: grey;
 }
-#tasksList .taskDec[contenteditable='true'] {
+#tasksList .taskDescription[contenteditable='true'] {
   border: 1px solid lightgray;
-}
-
-#tasksList .taskTitle[readonly='readonly'] {
-  appearance: none;
-  border: none;
-  outline: none;
 }
 
 #tasksList .checkTask {

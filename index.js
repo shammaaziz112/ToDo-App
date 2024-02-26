@@ -1,5 +1,5 @@
-let inputTask = document.querySelector('#inputTask');
-let inputTaskDec = document.querySelector('#inputTaskDec');
+let inputTaskTitle = document.querySelector('#inputTaskTitle');
+let inputTaskDescription = document.querySelector('#inputTaskDescription');
 let addBtn = document.querySelector('#add-task');
 let deleteAllBtn = document.querySelector('#deleteAll-task');
 let tasksList = document.querySelector('#tasksList');
@@ -56,12 +56,12 @@ getDataFromLocalStorage();
 
 // Add Task
 addBtn.onclick = function () {
-  if (inputTask.value) {
-    console.log(inputTask.value.length);
-    if (inputTask.value.length <= 30) {
-      addTaskToArray(inputTask.value, inputTaskDec.value); // Add Task To Array Of Tasks
-      inputTask.value = ''; // Empty inputTask Field
-      inputTaskDec.value = '';
+  if (inputTaskTitle.value) {
+    console.log(inputTaskTitle.value.length);
+    if (inputTaskTitle.value.length <= 30) {
+      addTaskToArray(inputTaskTitle.value, inputTaskDescription.value); // Add Task To Array Of Tasks
+      // inputTaskTitle.value = ''; // Empty inputTask Field
+      // inputTaskDescription.value = '';
     } else {
       alert('It is ToDo List NOT Journal 😒');
     }
@@ -143,16 +143,16 @@ function renderTasks(arrayOfTasks) {
     taskTitle.classList.add('taskTitle');
     taskTitle.setAttribute('contenteditable', 'false');
 
-    let taskDec = document.createElement('span');
-    taskDec.textContent = task.description;
-    taskDec.classList.add('taskDec');
-    taskDec.setAttribute('contenteditable', 'false');
+    let taskDescription = document.createElement('span');
+    taskDescription.textContent = task.description;
+    taskDescription.classList.add('taskDescription');
+    taskDescription.setAttribute('contenteditable', 'false');
 
     let divTask = document.createElement('div');
     divTask.classList.add('divTask');
 
     divTask.appendChild(taskTitle);
-    divTask.appendChild(taskDec);
+    divTask.appendChild(taskDescription);
 
     taskLi.appendChild(divTask);
 
@@ -206,17 +206,17 @@ function renderTasks(arrayOfTasks) {
       ) {
         editButton.innerHTML = `<i class="fa-regular fa-square-check"></i>`;
         taskTitle.contentEditable = true;
-        taskDec.contentEditable = true;
+        taskDescription.contentEditable = true;
         taskTitle.focus();
       } else {
         editButton.innerHTML = `<i class="fa-regular fa-pen-to-square"></i>`;
         // taskTitle.setAttribute('readonly', 'readonly');
         taskTitle.contentEditable = false;
-        taskDec.contentEditable = false;
+        taskDescription.contentEditable = false;
         editTaskTitle(
           target.getAttribute('data-id'),
           taskTitle.textContent,
-          taskDec.textContent
+          taskDescription.textContent
         );
       }
     });
